@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app= "myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+<body ng-app>
+
+  <div class = "col-md-6 col-md-offset-3">
+    <div ng-controller="MovieCtrl">
+      <h2 class="text-center">Movies</h2><hr>
+     <!--  <label for="search_movies">Search Movies</label> -->
+
+      <!-- <button class="btn btn-primary" ng-click="newMovieForm=true" ng-hide="newMovieForm">Add a Movie</button> -->
+
+      <input type="text" class="form-control" placeholder="Search Movies" ng-model="searchMovies.title">
+      <h3 class= "text-center">
+        <ng-pluralize count="moviesToWatch.length"
+                      when="{ '0': 'No movies to watch',
+                              '1': 'One movie to watch',
+                              'other': '{} movies to watch'}">
+        </ng-pluralize>
+      </h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Movie Title</th>
+            <th>Movie Genre</th>
+            <th>Date</th>
+            <th>View</th>
+            <th>Delete <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in moviesToWatch | orderBy: 'title' | filter:searchMovies | limitTo:3">
+            <td>{{ value.title }}</td>
+            <td>{{ value.genre }}</td>
+            <td>{{ value.year }}</td>
+            <td></td>
+            <td><a href="javascript:void(0)" ng-click="deleteMovie(movie)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn btn-primary" ng-click="newMovieForm=true" ng-hide="newMovieForm">Add a Movie</button>
+
+      <div ng-show= "newMovieForm">
+        <h4>Add a movie!</h4>
+        <form ng-submit="createMovie()">
+          <div class= "form-group">
+            <input type="text" class="form-control" placeholder="title" ng-model="newMovie.title">
+          </div>
+          <div class= "form-group">
+            <input type="text" class="form-control" placeholder="genre" ng-model="newMovie.genre">
+          </div>
+          <div class= "form-group">
+            <input type="text" class="form-control" placeholder="year" ng-model="newMovie.year">
+          </div>
+          <input type="submit" class="btn btn-primary">
+        </form>
+        
+      </div>
+    
+    </div>
+  </div>
+
+
+</body>
+</html>
