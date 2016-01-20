@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html lang="en" ng-app="movies">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular</title>
+	<!-- bootstrap css -->
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- angular -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+
+	<!-- custom script (angular app) -->
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-controller="moviesCtr">
+<h4>Add A New Movie</h4>
+<form ng-submit="addMovie()">
+		<div class="form-group">
+				<input type="text" class="form-control" ng-model="movie.name" placeholder="Name">
+		</div>
+		<div class="form-group">
+				<input type="text" class="form-control" ng-model="movie.length" placeholder="Length">
+		</div>
+		<input type="submit" class="btn btn-primary">
+</form>
+<p><ng-pluralize count={{moviesToWatch.length}}
+                 when="{0 :'No Movie To Watch',
+                     		'1': '1 movie to watch',
+                     		'other': '{} movies to watch'}">
+</ng-pluralize> </p>
+<p>
+	<a href ng-click="incrementLimit()" ng-hide="morebtn">more</a>
+	<a href ng-click="decrementLimit()" ng-show="morebtn">less</a>
+</p>
+<ul>
+	<li ng-style="myStyle" ng-repeat="movie in moviesToWatch | orderBy: 'name'| limitTo: limit">{{movie.name}}, {{movie.length}}
+	<a href="javascript:void(0)" ng-click="deleteMovie(movie)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+	<a href="javascript:void(0)" ng-click="myStyle={'color': 'red'}">mark as watched</a>
+	</li>
+</ul>
+
+
+</body>
+</html>
