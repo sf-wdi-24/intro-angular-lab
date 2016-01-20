@@ -41,12 +41,14 @@
 				<div ng-repeat="movie in moviesToWatch | orderBy: ['-title'] | limitTo: 5" class="row movie">
 					<div class="col-sm-5 pic-holder">
 						<a href="javascript:void(0)" ng-click="deleteMovie(movie)" class="delete"><i class="fa fa-trash"></i></a>
+						<a href="javascript:void(0)" ng-click="watchedMovie(movie)" class="watched"><i class="fa fa-calendar-check-o"></i></a>
+						<a href="javascript:void(0)" ng-click="unWatchedMovie(movie)" class="un-watched"><i class="fa fa-calendar-o"></i></a>
 						<img src="{{ movie.poster }}" class="img-reponsive">
 					</div>
 					<div class="col-sm-7">
-						<h2>{{ movie.title }}</h2>
-						<h4>{{ movie.year }}</h4>
-						<h4><a href="{{ movie.poster }}">View Poster</a></h4>
+						<h2 ng-style="movie.style">{{ movie.title }}</h2>
+						<h4 ng-style="movie.style">{{ movie.year }}</h4>
+						<h4 ng-style="movie.style"><a href="{{ movie.poster }}">View Poster</a></h4>
 					</div>
 				</div>
 			</div>

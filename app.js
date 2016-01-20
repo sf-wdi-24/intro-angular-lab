@@ -40,4 +40,10 @@ app.controller('MovieCtrl', ['$scope', function($scope) {
 		movieToBeDeleteIndex = $scope.moviesToWatch.indexOf(movie);
 		$scope.moviesToWatch.splice(movieToBeDeleteIndex, 1);
 	};
+	$scope.watchedMovie = function(movie) {
+		movie.style = {"text-decoration": "line-through"};
+	};
+	$scope.unWatchedMovie = function(movie) {
+		movie.style = {"text-decoration": "none"};
+	};
 }]);

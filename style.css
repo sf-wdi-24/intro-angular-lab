@@ -12,3 +12,13 @@ img {
 	top: 5px;
 	left: 200px;
 }
+.watched{
+	position: absolute;
+	top: 5px;
+	left: 220px;
+}
+.un-watched{
+	position: absolute;
+	top: 5px;
+	left: 240px;
+}
