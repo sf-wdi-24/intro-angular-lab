@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html ng-app="movieApp">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset-UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="app.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<title>Movie App</title>
+	</head>
+	<body ng-controller="MovieCtrl">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<h1>Movies</h1>
+					<hr>
+					<!--- add new movie -->
+					<form ng-submit="addMovie()">
+						<div class="form group">
+							<input type="text" class="form-control" ng-model="addMovie.title" placeholder="Movie title">
+						</div>
+						&nbsp &nbsp
+						<div class="form group">
+							<input type="text" class="form-control" ng-model="addMovie.image" placeholder="Image">
+						</div>
+						<br>
+						<input type="submit" class="btn btn-info">
+					</form>
+					&nbsp
+					<div ng-if="moviesToWatch.length > 0" >
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">	
+									{{ moviesToWatch.length }} 
+									<span ng-pluralize count="moviestoWatch.length" when="{'1': 'Movie',
+								'other': 'Movies'}"></span> to Watch
+								</h3>
+							</div>	
+
+
+							<!--- list of movies -->
+					<p ng-repeat="movie in moviesToWatch | orderBy: 'title' | filter:searchMovies | limitTo:5">
+						<span><strong>{{ movie.title }}</strong> | <img src="{{ movie.image }}"></span>
+						<a href="#" ng-click="deleteMovie(movie)"><i class="glyphicon glyphicon-remove"></i>
+						</a>
+
+					</p>
+				</div>
+			</div>
+		</div>					
+	</body>
+</html>	
