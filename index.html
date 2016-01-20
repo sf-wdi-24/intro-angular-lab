@@ -20,6 +20,7 @@
 							<th>Title</th>
 							<th>Rating</th>
 							<th>Type</th>
+							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody ng-repeat="(key,value) in moviesToWatch | orderBy:'title' | filter:searchMovies">
@@ -27,6 +28,7 @@
 							<td>{{ value.title }}</td>
 							<td>{{ value.rating }}</td>
 							<td>{{ value.type }}</td>
+							<td><a href="#" ng-click="deleteMovie(value)"><i class="glyphicon glyphicon-remove-circle"></i></a></td>
 						</tr>
 					</tbody>
 				</table>

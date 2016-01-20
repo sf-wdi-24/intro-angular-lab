@@ -27,12 +27,12 @@ app.controller("MovieCtrl", ['$scope', function($scope) {
 	$scope.addMovie = function() {
 		var newMovie = $scope.newMovie;
 		$scope.moviesToWatch.push(newMovie);
-		$scope.movie = {};
+		$scope.newMovie = {};
 	};
 
 	$scope.deleteMovie = function(movie) {
-		var movieIndex = $scope.movies.indexOf(movie);
-		$scope.movies.splice(moviesIndex, 1);
+		var movieIndex = $scope.moviesToWatch.indexOf(movie);
+		$scope.moviesToWatch.splice(movieIndex, 1);
 	};
 
 }]);
