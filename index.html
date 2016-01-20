@@ -22,7 +22,7 @@
 							<th>Type</th>
 						</tr>
 					</thead>
-					<tbody ng-repeat="(key,value) in moviesToWatch | orderBy:['rating', 'name']">
+					<tbody ng-repeat="(key,value) in moviesToWatch | orderBy:'title' | filter:searchMovies">
 						<tr>
 							<td>{{ value.title }}</td>
 							<td>{{ value.rating }}</td>
@@ -31,8 +31,9 @@
 					</tbody>
 				</table>
 				<label for="search_movies">Search Movies</label>
-				<input type="text" class="form-control" ng-model="searchMovies.type">
+				<input type="text" class="form-control" ng-model="searchMovies.title">
 				<hr>
+
 				<button class="btn btn-primary" ng-click="newMovieForm=true" ng-hide="newMovieForm">Add New Movie</button>
 				
 				<div ng-show="newMovieForm">
@@ -49,7 +50,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control" ng-model="newMovie.type" placeholder="Type">
 						</div>
-						
+
 						<input type="submit" class="btn btn-primary">
 					</form>
 				</div>

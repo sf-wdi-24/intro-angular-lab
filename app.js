@@ -1,6 +1,6 @@
 var app = angular.module("myApp", []);
 
-app.controller("MovieCtrl", function($scope) {
+app.controller("MovieCtrl", ['$scope', function($scope) {
 	$scope.moviesToWatch = [{
 		title: 'Titantic',
 		rating: 'R',
@@ -28,7 +28,6 @@ app.controller("MovieCtrl", function($scope) {
 		var newMovie = $scope.newMovie;
 		$scope.moviesToWatch.push(newMovie);
 		$scope.movie = {};
-
 	};
 
 	$scope.deleteMovie = function(movie) {
@@ -36,4 +35,4 @@ app.controller("MovieCtrl", function($scope) {
 		$scope.movies.splice(moviesIndex, 1);
 	};
 
-});
+}]);
