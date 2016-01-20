@@ -22,5 +22,9 @@ var app = angular.module('movieApp', []);
 			$scope.newMovie = {};
 			$scope.newMovieForm = false;
 		};
+		$scope.deleteMovie = function(movie){
+			var movieIndex = $scope.moviesToWatch.indexOf(movie);
+			$scope.moviesToWatch.splice(movieIndex,1);
+		}
 	}]);
 })();

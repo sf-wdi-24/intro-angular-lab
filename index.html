@@ -10,7 +10,7 @@
 	</head>
 	<body ng-controller="MovieCtrl">
 		<div ng-repeat="movie in moviesToWatch | orderBy:'name'| limitTo:3">
-			<p>{{movie.name}}</p>
+			<p>{{movie.name}} <a href="javascript:void(0)" ng-click="deleteMovie(movie)">Delete Pet</a></p>
 		</div>
 
 		<div ngshow="newMovieForm">
