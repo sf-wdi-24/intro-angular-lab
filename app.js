@@ -21,5 +21,13 @@ app.controller('moviesCtrl', ['$scope', function($scope) {
       title: 'applesauce'
     }
   ];
-  $scope.movieCount = $scope.moviesToWatch.length;
+  $scope.createMovie = function() {
+    var newMovie = $scope.newMovie = {};
+    $scope.moviesToWatch.push(newMovie);
+    $scope.newMovieForm = false;
+  };
+  $scope.deleteMovie = function (movie) {
+    var movieIndex = $scope.moviesToWatch.indexOf(movie);
+    $scope.moviesToWatch.splice(movieIndex, 1);
+  };
 }])
