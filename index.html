@@ -14,13 +14,15 @@
 						'one': '{} Movie to Watch',
 						'other': '{} Movies to Watch'}"
 			</ng-pluralize> </h1>
-		<div class="row" ng-repeat="movie in moviesToWatch | orderBy: '-title' | limitTo: 5">
-			<div class="col-md-4">
+		<div class="row" ng-repeat="movie in moviesToWatch | orderBy: '-title' | limitTo: showAll ">
+			<div class="col-md-3">
 				{{movie.title}}
 				{{movie.year}}
 				{{movie.runtime}}
 			</div>
+			<a ng-click="deleteMovie(movie)" class="glyphicon glyphicon-trash"></a>
 		</div>
+		<a ng-click="showMovies()">View All</a>
 		<hr>
 		<form ng-submit="addMovie()">
 		<label for="title">Title</label>

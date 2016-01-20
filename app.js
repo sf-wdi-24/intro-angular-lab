@@ -39,7 +39,17 @@ app.controller('MovieCtrl',['$scope', function($scope) {
 		}
 	};
 
-	$scope.deleteMovie = function () {
+	$scope.showAll = 5;
+	$scope.showMovies = function () {
+		if ($scope.showAll) { 
+			$scope.showAll = false;
+		} else {
+			$scope.showAll = 5;
+		}
+	};
+
+	$scope.deleteMovie = function (movie) {
 		var movieIndex = $scope.moviesToWatch.indexOf(movie);
+		$scope.moviesToWatch.splice(movieIndex, 1);
 	};
 }]);
