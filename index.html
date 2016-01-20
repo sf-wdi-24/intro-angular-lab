@@ -27,26 +27,25 @@
 
 						<button class="btn btn-primary" ng-click="newMovieToWatchForm=true" ng-hide="newMovieToWatchForm">Add Flick</button>
 
-						<div ng-show="newMovieToWatchForm"> 
+						<div ng-show="newMoviesToWatchForm"> 
 								<h5>Add Flick</h5>
-								<form ng-submit="createMoveToWatch()">
+								<form ng-submit="createMoviesToWatch()">
 									<div class="form-group"> 
-											<input type="text" class="form-control" ng-model="newMovieToWatch.name" placeholder="Name">
+											<input type="text" class="form-control" ng-model="newMoviesToWatch.name" placeholder="Name">
 									</div>
 								<input type="submit" class="btn btn-primary">
 								</form>
 						</div>
-						<button ng-click="AppendMovieToWatch()">More Flicks</button>
-						<div id="divID">
-						</div>
+						<button ng-click="moviesToWatch">More Flicks</button>
+
 
 						<p ng-repeat="moviesToWatch in moviesToWatch | orderBy: ['name'] | orderBy: '-name'| limitTo:5">  
 							<span ng-style="moviesToWatch.name"><strong>{{moviesToWatch.name}}</strong></span>
-						<a href="javascript:void(0)" ng-click="deleteMovieToWatch(movieToWatch)"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+						<a href="javascript:void(0)" ng-click="deleteMoviesToWatch(moviesToWatch)"><span class="glyphicon glyphicon-thumbs-down"></span></a>
 						</p>
 					
 
-						<ng-pluralize count="movieToWatchCount"
+						<ng-pluralize count="moviesToWatchCount"
                  when="{'one': '1 movie.',
                      'other': '{} movies.'}">
 						</ng-pluralize>
