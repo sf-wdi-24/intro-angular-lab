@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Intro to Angular</title>
+	<!-- Bootstrap CSS -->
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="main.css">
+	<!-- angular -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+	<!-- custom css -->
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-controller="MovieCtrl" ng-style=" style ">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-info pull-right" ng-click="changeBackground()">Change background</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 movie-list">
+				<form class="form-group" ng-submit="addMovie()">
+					<hr>
+					<input class="form-control" ng-model="newMovie.title" type="text" placeholder="Movie Title">
+					<input class="btn btn-info form-control" type="submit" value="Add Movie">
+					<hr>
+				</form>
+					<h1 class="page-header text-center">
+						<ng-pluralize count= moviesToWatch.length
+						when="{'0': 'No movies to watch',
+									 'one': '{} movie to watch', 
+									 'other': '{} movies to watch'}">
+						</ng-pluralize>
+					</h1>
+			</div>
+		</div>
+		<div class="row" ng-repeat="movie in moviesToWatch | orderBy: '-title' | limitTo: limit || 5">
+			<div class="col-md-5 col-md-offset-3 movie-list">
+				<div class="individual-movie">
+					<h4 ng-class="{'seen': movieSeen}"><input type="checkbox" ng-model="movieSeen"> {{movie.title}} </h4>
+				</div>
+			</div>
+			<div class="col-md-1 movie-list">
+				<h4 ng-click="removeMovie(movie)" class="delete glyphicon glyphicon-trash" aria-hidden="true"></h4>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 movie-list">
+				<a class="btn btn-info form-control" href="" ng-hide="allTitles" ng-click="moreTitles()">See all movies</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
