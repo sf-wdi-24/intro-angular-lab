@@ -16,16 +16,18 @@
                            placeholder="Search title"
                            class="form-control">
       </label>
-      <h3 ng-pluralize count="movieCount"
-                       when="{'0': 'No movies to watch.',
-                              'one': '1 movie to watch.',
-                              'other':'{} movies to watch.'
-                              }">
+      <div>
+        <h3 ng-pluralize count="movieCount"
+                         when="{'0': 'No movies to watch.',
+                                'one': '1 movie to watch.',
+                                'other':'{} movies to watch.'
+                                }">
 
-      </h3>
-    </div>
-    <div class="col-md-6 col-md-offset-3" ng-repeat="movies in moviesToWatch | filter:mTitle | orderBy:['title']">
-      <p><strong>title:</strong> {{movies.title}}</p>
+        </h3>
+      </div>
+      <div ng-repeat="movies in moviesToWatch | filter:mTitle | orderBy:['title']">
+        <p><strong>title:</strong> {{movies.title}}</p>
+      </div>
     </div>
   </div>
 </body>
