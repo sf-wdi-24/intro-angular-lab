@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movies">
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <title>angular practice</title>
+
+</head>
+<body>
+  <div ng-controller="moviesCtrl">
+    <div class="col-md-6 col-md-offset-3">
+      <label for="search_movies">
+        <input type="text" ng-model="mTitle"
+                           placeholder="Search title"
+                           class="form-control">
+      </label>
+      <h3 ng-pluralize count="movieCount"
+                       when="{'0': 'No movies to watch.',
+                              'one': '1 movie to watch.',
+                              'other':'{} movies to watch.'
+                              }">
+
+      </h3>
+    </div>
+    <div class="col-md-6 col-md-offset-3" ng-repeat="movies in moviesToWatch | filter:mTitle | orderBy:['title']">
+      <p><strong>title:</strong> {{movies.title}}</p>
+    </div>
+  </div>
+</body>
+</html>
