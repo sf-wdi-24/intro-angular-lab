@@ -42,4 +42,23 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
 			}
 ]; 
 
+
+		$scope.createmovieToWatch = function(){
+			$scope.movieToWatch.push($scope.newmovieToWatch); 
+			$scope.newmovieToWatch = {}; 
+			$scope.newmovieToWatchForm = false; 
+		}; 
+
+
+		function MainCtrl($scope) {
+    $scope.AppendMovieToWatch = function() {
+     var app = angular.element( document.querySelector( '#divID' ) );
+     myapp.append('moviesToWatch.name');     
+    }; 
+
+   	$scope.deleteMovieToWatch = function(pet) {
+		var movieToWatchIndex = $scope.movieToWatch.indexOf(movieToWatch);
+		$scope.movieToWatch.splice(movieToWatchIndex, 1);
+	};
+}
 }]); 
