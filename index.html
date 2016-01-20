@@ -3,12 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!-- custom css -->
+	<link type="text/css" rel="stylesheet" href="style.css">
 	<title>Document</title>
 </head>
 <body ng-controller="MovieCtrl">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-sm-8 col-sm-offset-2">
 				<h1 class="text-center">
 					<ng-pluralize count="moviesToWatch.length"
 	          when="{'0': 'No Movies to Watch',
@@ -16,13 +19,34 @@
 	            'other': '{} Movies to Watch'}">
 					</ng-pluralize>
 				</h1>
-				<div ng-repeat="movie in moviesToWatch | orderBy: ['-title']" class="row">
-					<div class="col-md-5">
-						<img src="{{ movie.poster }}" class="img-reponsive" style="height: 200px">
+
+				<form ng-submit="addMovie()">
+					<div class="form-group">
+						<label for="title">Title</label>
+						<input type="text" ng-model="newMovie.title" class="form-control" id="title" autofocus>
 					</div>
-					<div class="col-md-7">
+					<div class="form-group">
+						<label for="year">Year</label>
+						<input type="text" ng-model="newMovie.year" class="form-control" id="year">
+					</div>
+					<div class="form-group">
+						<label for="poster">Poster Url</label>
+						<input type="text" ng-model="newMovie.poster" class="form-control" id="poster">
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary" value="Add">
+					</div>
+				</form>
+
+				<div ng-repeat="movie in moviesToWatch | orderBy: ['-title'] | limitTo: 5" class="row movie">
+					<div class="col-sm-5 pic-holder">
+						<a href="javascript:void(0)" ng-click="deleteMovie(movie)" class="delete"><i class="fa fa-trash"></i></a>
+						<img src="{{ movie.poster }}" class="img-reponsive">
+					</div>
+					<div class="col-sm-7">
 						<h2>{{ movie.title }}</h2>
 						<h4>{{ movie.year }}</h4>
+						<h4><a href="{{ movie.poster }}">View Poster</a></h4>
 					</div>
 				</div>
 			</div>

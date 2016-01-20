@@ -1,0 +1,14 @@
+.movie {
+	margin-bottom: 10px;
+}
+img {
+	height: 250px;
+}
+.pic-holder {
+	position: relative;
+}
+.delete {
+	position: absolute;
+	top: 5px;
+	left: 200px;
+}
