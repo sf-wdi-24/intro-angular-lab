@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+	<meta charset="UTF-8">
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<title>Document</title>
+</head>
+<body ng-controller="MovieCtrl">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<h1 class="text-center">
+					<ng-pluralize count="moviesToWatch.length"
+	          when="{'0': 'No Movies to Watch',
+	            '1': '1 Movie to Watch',
+	            'other': '{} Movies to Watch'}">
+					</ng-pluralize>
+				</h1>
+				<div ng-repeat="movie in moviesToWatch | orderBy: ['-title']" class="row">
+					<div class="col-md-5">
+						<img src="{{ movie.poster }}" class="img-reponsive" style="height: 200px">
+					</div>
+					<div class="col-md-7">
+						<h2>{{ movie.title }}</h2>
+						<h4>{{ movie.year }}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- angular -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<!-- custom js -->
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
