@@ -38,6 +38,11 @@ app.controller('MovieCtrl', ['$scope', function($scope) {
     $scope.newMovieForm = false;
   };
 
+  $scope.deleteMovie = function(movie) {
+    var movieIndex = $scope.movies.indexOf(movie);
+    $scope.movies.splice(movieIndex, 1);
+  };
+
 }]);
 
 
