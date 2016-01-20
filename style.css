@@ -1,8 +1,23 @@
-.movie {
+.body {
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	background-repeat: repeat-x;
+  background-position: right top;
+  background-attachment: fixed;
+}
+.holder {
+	padding-bottom: 50px;
+}
+.movie, form {
 	margin-bottom: 10px;
+	background-color: rgba(255,255,255,0.5);
+ 	box-shadow: 0 0 10px 1px rgba(0,0,0,0.25);
+ 	margin-bottom: 1em;
+ 	padding: 10px;
 }
 img {
-	height: 250px;
+	width: 250px;
 }
 .pic-holder {
 	position: relative;
@@ -10,15 +25,15 @@ img {
 .delete {
 	position: absolute;
 	top: 5px;
-	left: 200px;
+	left: 280px;
 }
 .watched{
 	position: absolute;
-	top: 5px;
-	left: 220px;
+	top: 25px;
+	left: 280px;
 }
 .un-watched{
 	position: absolute;
-	top: 5px;
-	left: 240px;
+	top: 45px;
+	left: 280px;
 }

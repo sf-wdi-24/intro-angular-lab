@@ -8,18 +8,21 @@
 	<link type="text/css" rel="stylesheet" href="style.css">
 	<title>Document</title>
 </head>
-<body ng-controller="MovieCtrl">
+<body ng-controller="MovieCtrl" ng-style="background">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2">
-				<h1 class="text-center">
-					<ng-pluralize count="moviesToWatch.length"
-	          when="{'0': 'No Movies to Watch',
-	            '1': '1 Movie to Watch',
-	            'other': '{} Movies to Watch'}">
-					</ng-pluralize>
-				</h1>
-
+			<div class="col-sm-8 col-sm-offset-2 holder">
+				<div class="text-center">
+					<h1>
+						<ng-pluralize count="moviesToWatch.length"
+		          when="{'0': 'No Movies to Watch',
+		            '1': '1 Movie to Watch',
+		            'other': '{} Movies to Watch'}">
+						</ng-pluralize>
+					</h1>
+					<button class="btn btn-default" ng-click="changeBackground()">Try Me</button>
+					<hr>
+				</div>
 				<form ng-submit="addMovie()">
 					<div class="form-group">
 						<label for="title">Title</label>
@@ -30,27 +33,28 @@
 						<input type="text" ng-model="newMovie.year" class="form-control" id="year">
 					</div>
 					<div class="form-group">
-						<label for="poster">Poster Url</label>
-						<input type="text" ng-model="newMovie.poster" class="form-control" id="poster">
+						<label for="picture">Picture Url</label>
+						<input type="text" ng-model="newMovie.picture" class="form-control" id="picture">
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn btn-primary" value="Add">
+						<input type="submit" class="btn btn-primary form-control" value="Add">
 					</div>
 				</form>
-
-				<div ng-repeat="movie in moviesToWatch | orderBy: ['-title'] | limitTo: 5" class="row movie">
+				<hr>
+				<div ng-repeat="movie in moviesToWatch | orderBy: ['-title'] | limitTo: movieLimitFive ? 5 : false" class="row movie">
 					<div class="col-sm-5 pic-holder">
 						<a href="javascript:void(0)" ng-click="deleteMovie(movie)" class="delete"><i class="fa fa-trash"></i></a>
-						<a href="javascript:void(0)" ng-click="watchedMovie(movie)" class="watched"><i class="fa fa-calendar-check-o"></i></a>
-						<a href="javascript:void(0)" ng-click="unWatchedMovie(movie)" class="un-watched"><i class="fa fa-calendar-o"></i></a>
-						<img src="{{ movie.poster }}" class="img-reponsive">
+						<a href="javascript:void(0)" ng-click="watchedMovie(movie)" class="watched"><i class="fa" ng-class="{'fa-check-circle-o': movie.watched, 'fa-circle-o': !movie.watched}"></i></a>
+						<img src="{{ movie.picture }}" class="img-reponsive">
 					</div>
 					<div class="col-sm-7">
 						<h2 ng-style="movie.style">{{ movie.title }}</h2>
 						<h4 ng-style="movie.style">{{ movie.year }}</h4>
-						<h4 ng-style="movie.style"><a href="{{ movie.poster }}">View Poster</a></h4>
 					</div>
 				</div>
+  			<a href="#" ng-click="toggleMovieLimit()" class="pull-right">
+  				Show {{movieLimitFive ? "More" : "Less"}}
+  			</a>
 			</div>
 		</div>
 	</div>

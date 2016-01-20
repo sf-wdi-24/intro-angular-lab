@@ -2,48 +2,59 @@ var app = angular.module('movieApp', []);
 app.controller('MovieCtrl', ['$scope', function($scope) {
 	$scope.moviesToWatch = [
 		{
-			title: "Revenant",
-			year: 2015,
-			poster: "https://s-media-cache-ak0.pinimg.com/736x/08/5d/03/085d03068aa497f3bb9bf2a3d0babc6c.jpg"
+			title: "The Revenant",
+			year: 2016,
+			picture: "https://fanart.tv/fanart/movies/281957/moviebackground/the-revenant-56696620a2821.jpg"
 		},
 		{
-			title: "Antman",
+			title: "Ant Man",
 			year: 2015,
-			poster: "http://41.media.tumblr.com/5914580214f9f7686bd8d2b718a0a962/tumblr_nnxu5pMOJM1tumb9ao1_500.jpg"
+			picture: "https://events.ucsb.edu/wp-content/uploads/2015/09/Marvel-Ant-Man-Banner-Poster.jpg"
 		},
 		{
 			title: "Avengers: Age of Utron",
 			year: 2015,
-			poster: "http://thefilmstage.com/wp-content/uploads/2015/04/pp052015_avengers202.jpg"
+			picture: "http://oi57.tinypic.com/28bfu3a.jpg"
 		},
 		{
 			title: "Agent 47",
 			year: 2015,
-			poster: "http://40.media.tumblr.com/0eee1678d27e6575e7b4c9eac0d49e40/tumblr_nszhmgdL6m1ri74e4o3_500.jpg"
+			picture: "http://images8.alphacoders.com/614/614163.jpg"
 		},
 		{
 			title: "The Martian",
 			year: 2015,
-			poster: "http://thefilmstage.com/wp-content/uploads/2015/09/pp102015_martian01.jpg"
+			picture: "http://s3.foxfilm.com/foxmovies/production/films/104/images/gallery/martian-gallery3-gallery-image.jpg"
 		},
 		{
 			title: "Creed",
 			year: 2015,
-			poster: "http://static1.squarespace.com/static/548fddcde4b0bbd467f73559/t/568c32ba5a56689becb297b4/1452028604332/Creed+Movie+Poster?format=500w"
+			picture: "http://totalrocky.com/films/creed-2015/ucwzuno3i1xbdo3dkucv.jpg"
 		}
 	];
-	$scope.addMovie = function () {
+	$scope.addMovie = function() {
 		$scope.moviesToWatch.push($scope.newMovie);
 		$scope.newMovie = {};
+	};
+	$scope.movieLimitFive = true;
+	$scope.toggleMovieLimit = function() {
+		if ($scope.movieLimitFive) {
+			$scope.movieLimitFive = false;
+		} else {
+			$scope.movieLimitFive = true;
+		}
 	};
 	$scope.deleteMovie = function(movie) {
 		movieToBeDeleteIndex = $scope.moviesToWatch.indexOf(movie);
 		$scope.moviesToWatch.splice(movieToBeDeleteIndex, 1);
 	};
 	$scope.watchedMovie = function(movie) {
-		movie.style = {"text-decoration": "line-through"};
+		movie.watched = movie.watched ? false : true;
+		movie.watched ? movie.style = {"text-decoration" : "line-through"} : movie.style = {"text-decoration" : "none"};
 	};
-	$scope.unWatchedMovie = function(movie) {
-		movie.style = {"text-decoration": "none"};
-	};
+	$scope.changeBackground = function() {
+    randomNum = Math.floor(Math.random() * $scope.moviesToWatch.length);
+    randomPicture = $scope.moviesToWatch[randomNum].picture;
+    $scope.background = {'background-image': 'url(' + randomPicture + ')'};
+  };
 }]);
