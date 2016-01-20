@@ -33,8 +33,12 @@ app.controller('MovieCtrl', ['$scope', function($scope) {
 		}
 	];
 	$scope.addMovie = function() {
+		if (!$scope.newMovie.picture) {
+			$scope.newMovie.picture = "http://gujaratprachar.com/img/placeholder_noImage_bw.png";
+		}
 		$scope.moviesToWatch.push($scope.newMovie);
 		$scope.newMovie = {};
+		$scope.newMovieForm = false;
 	};
 	$scope.movieLimitFive = true;
 	$scope.toggleMovieLimit = function() {
@@ -50,6 +54,9 @@ app.controller('MovieCtrl', ['$scope', function($scope) {
 	};
 	$scope.watchedMovie = function(movie) {
 		movie.watched = movie.watched ? false : true;
+		if (movie.watched) {
+			movie.watchedTime = (new Date()).toLocaleDateString();
+		}
 		movie.watched ? movie.style = {"text-decoration" : "line-through"} : movie.style = {"text-decoration" : "none"};
 	};
 	$scope.changeBackground = function() {

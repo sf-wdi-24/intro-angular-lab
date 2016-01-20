@@ -9,9 +9,12 @@
 .holder {
 	padding-bottom: 50px;
 }
+.header {
+	padding: 10px;
+	background-color: rgba(255,255,255,0.9);
+}
 .movie, form {
-	margin-bottom: 10px;
-	background-color: rgba(255,255,255,0.5);
+	background-color: rgba(255,255,255,0.9);
  	box-shadow: 0 0 10px 1px rgba(0,0,0,0.25);
  	margin-bottom: 1em;
  	padding: 10px;
