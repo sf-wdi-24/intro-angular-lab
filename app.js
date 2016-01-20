@@ -23,11 +23,12 @@ app.controller("MovieCtrl", function($scope) {
 		type: 'Animated'
 	}];
 
-	$scope.movie = {};
+	// $scope.movie = {};
 	$scope.addMovie = function() {
-		var newMovie = $scope.moviesToWatch;
-		$scope.movie = {};
+		var newMovie = $scope.newMovie;
 		$scope.moviesToWatch.push(newMovie);
+		$scope.movie = {};
+
 	};
 
 	$scope.deleteMovie = function(movie) {
