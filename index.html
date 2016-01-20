@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="introNg">
+<head>
+	<meta charset="UTF-8">
+	<title>Movie App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body  ng-controller="MovieCtrl">
+	<div class="container">
+		<h1><ng-pluralize count=moviesToWatch.length 
+			when="{'0': 'All Movies Watched!',
+						'one': '{} Movie to Watch',
+						'other': '{} Movies to Watch'}"
+			</ng-pluralize> </h1>
+		<div class="row" ng-repeat="movie in moviesToWatch | orderBy: '-title' | limitTo: showAll ">
+			<div class="col-md-3">
+				{{movie.title}}
+				{{movie.year}}
+				{{movie.runtime}}
+			</div>
+			<a ng-click="deleteMovie(movie)" class="glyphicon glyphicon-trash"></a>
+		</div>
+		<a ng-click="showMovies()">View All</a>
+		<hr>
+		<form ng-submit="addMovie()">
+		<label for="title">Title</label>
+			<input id="title" class="form-control" type="text" ng-model="movie.title">
+			<label for="title">Year</label>
+			<input id="year" class="form-control" type="text" ng-model="movie.year">
+			<label for="title">Runtime</label>
+			<input id="runtime" class="form-control" type="text" ng-model="movie.runtime">
+			<input class="btn btn-default" type="submit" value="Add Movie to List" />
+		</form>
+	</div>
+</body>
+</html>
