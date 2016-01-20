@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+	<head>
+		<meta charset="UTF-8">
+		<!-- angular -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+		<!-- custom script (angular app) -->
+		<script type="text/javascript" src="app.js"></script>
+		<title>Augular Practice</title>
+	</head>
+	<body ng-controller="MovieCtrl">
+		<div ng-repeat="movie in moviesToWatch | orderBy:'name'| limitTo:3">
+			<p>{{movie.name}}</p>
+		</div>
+
+		<div ngshow="newMovieForm">
+			<form ng-submit="createMovie()">
+				<input type="text" ng-model="newMovie.name">
+				<input type="submit">
+			</form>
+		</div>
+
+
+
+		<div ngPluralize>
+			<p>{{moviesToWatch.length}} movies to watch</p>
+		</div>
+	</body>
+</html>
