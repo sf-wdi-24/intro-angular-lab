@@ -17,6 +17,8 @@
 			<div class="col-md-12">
 				<button class="btn btn-info pull-right" ng-click="changeBackground()">Change background</button>
 			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-6 col-md-offset-3 movie-list">
 				<form class="form-group" ng-submit="addMovie()">
 					<hr>
@@ -31,13 +33,21 @@
 									 'other': '{} movies to watch'}">
 						</ng-pluralize>
 					</h1>
-				<div ng-repeat="movie in moviesToWatch | orderBy: '-title' | limitTo: limit || 5">
-					<div class="individual-movie">
-						<h4 ng-class="{'seen': movieSeen}">{{movie.title}}  <input type="checkbox" ng-model="movieSeen"></h4>
-						<a href="" ng-click="removeMovie(movie)">Remove from List<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-					</div>
+			</div>
+		</div>
+		<div class="row" ng-repeat="movie in moviesToWatch | orderBy: '-title' | limitTo: limit || 5">
+			<div class="col-md-5 col-md-offset-3 movie-list">
+				<div class="individual-movie">
+					<h4 ng-class="{'seen': movieSeen}"><input type="checkbox" ng-model="movieSeen"> {{movie.title}} </h4>
 				</div>
-				<hr>
+			</div>
+			<div class="col-md-1 movie-list">
+				<h4 ng-click="removeMovie(movie)" class="delete glyphicon glyphicon-trash" aria-hidden="true"></h4>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 movie-list">
 				<a class="btn btn-info form-control" href="" ng-hide="allTitles" ng-click="moreTitles()">See all movies</a>
 			</div>
 		</div>

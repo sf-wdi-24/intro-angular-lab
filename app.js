@@ -49,11 +49,11 @@ app.controller('MovieCtrl', ['$scope', function ($scope) {
 
 	$scope.changeBackground = function() {
 		var num = Math.floor(Math.random() * $scope.moviesToWatch.length);
-		console.log(num);
 		backgroundImage = $scope.moviesToWatch[num].image;
 		$scope.style = {'background-image':'url('+ backgroundImage +')'};
 	};
 	$scope.seenMovie = function() {
 		$scope.seen = true;
 	};
+
 }]);
