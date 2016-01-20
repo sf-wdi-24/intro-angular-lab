@@ -44,11 +44,10 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
 
 
 		$scope.createmovieToWatch = function(){
-			$scope.movieToWatch.push($scope.newmovieToWatch); 
-			$scope.newmovieToWatch = {}; 
-			$scope.newmovieToWatchForm = false; 
+			$scope.movieToWatch.push($scope.newMovieToWatch); 
+			$scope.newMovieToWatch = {}; 
+			$scope.newMovieToWatchForm = false; 
 		}; 
-
 
 		function MainCtrl($scope) {
     $scope.AppendMovieToWatch = function() {
@@ -56,9 +55,14 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
      myapp.append('moviesToWatch.name');     
     }; 
 
-   	$scope.deleteMovieToWatch = function(pet) {
+   	$scope.deleteMovieToWatch = function(movieToWatch) {
 		var movieToWatchIndex = $scope.movieToWatch.indexOf(movieToWatch);
 		$scope.movieToWatch.splice(movieToWatchIndex, 1);
 	};
 }
 }]); 
+
+
+
+
+
