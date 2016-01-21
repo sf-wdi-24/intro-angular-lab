@@ -1,0 +1,48 @@
+<html ng-app="intro">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Angular</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+  </head>
+  <body ng-controller="MainCtrl">
+    <div class="MainCtrl">
+      <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+          <h1>Intro Angular Lab</h1>
+          <br>
+          
+          
+          <div ng-if="moviesToWatch.length > 0">
+            <hr>
+            <div class="panel-heading">
+              <h3 class="panel-title">
+              {{moviesToWatch.length}} <span ng-pluralize count="moviesToWatch.length" when="{'1':'Movie', 'other': 'Movies'}"></span> to watch
+              </h3>
+            </div>
+          </div>
+          
+          <form ng-submit="createMovie()">
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="newMovie.title" placeholder="Title">
+              <input type="text" class="form-control" ng-model="newMovie.rating" placeholder="Rating">
+            </div>
+            <input type="Submit" class="btn btn-primary">
+          </form>
+          
+          <p ng-repeat="movie in moviesToWatch | orderBy:['title'] | limitTo:3" >
+            <strong>{{movie.title}}</strong>-Rated {{movie.rating}}
+
+            <span class="pull-right">
+                 <a href="#" ng-click="deleteMovie(movie)"><i class="glyphicon glyphicon-remove-circle"></i></a>
+                 <a href="#" ng-click="markWatched(movie)"><i class="glyphicon" ng-class="{'glyphicon-check': movie.watched, 'glyphicon-unchecked' : !movie.watched}"></i></a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
