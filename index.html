@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang= "en" ng-app="movieApp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- bootstrap css -->
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- angular -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+
+	<!-- custom script (angular app) -->
+	<script type="text/javascript" src="app.js"></script>
+
+		<title>Flicks</title>
+</head>
+<body ng-controller="MainCtrl"> 
+	<div class="container"> 
+				<div class="center">
+					<div class="col-md-6 col-md-offset-4"> 
+						<h2>Pick Your Flick!</h2>
+						<hr> 
+
+						<label for="search_pets">Search Flicks</label>
+						<input type="text" class="form-control" ng-model="searchMovieToWatch.name">
+
+						<button class="btn btn-primary" ng-click="newMovieToWatchForm=true" ng-hide="newMovieToWatchForm">Add Flick</button>
+
+						<div ng-show="newMoviesToWatchForm"> 
+								<h5>Add Flick</h5>
+								<form ng-submit="createMoviesToWatch()">
+									<div class="form-group"> 
+											<input type="text" class="form-control" ng-model="newMoviesToWatch.name" placeholder="Name">
+									</div>
+								<input type="submit" class="btn btn-primary">
+								</form>
+						</div>
+						<button ng-click="moviesToWatch">More Flicks</button>
+
+
+						<p ng-repeat="moviesToWatch in moviesToWatch | orderBy: ['name'] | orderBy: '-name'| limitTo:5">  
+							<span ng-style="moviesToWatch.name"><strong>{{moviesToWatch.name}}</strong></span>
+						<a href="javascript:void(0)" ng-click="deleteMoviesToWatch(moviesToWatch)"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+						</p>
+					
+
+						<ng-pluralize count="moviesToWatchCount"
+                 when="{'one': '1 movie.',
+                     'other': '{} movies.'}">
+						</ng-pluralize>
+					</div>
+			</div>
+	</div>
+
+
+<body>
+
+</body>
+</html>
